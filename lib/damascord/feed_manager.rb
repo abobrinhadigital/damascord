@@ -30,6 +30,16 @@ module Damascord
       @newest_post
     end
 
+    def fetch_latest_post
+      URI.open(FEED_URL) do |rss|
+        feed = RSS::Parser.parse(rss)
+        feed.items.first
+      end
+    rescue StandardError => e
+      puts "[ERRO ao buscar feed]: #{e.message}"
+      nil
+    end
+
     def update_cache!
       return if @newest_post.nil?
       

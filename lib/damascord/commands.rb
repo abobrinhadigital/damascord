@@ -9,6 +9,28 @@ module Damascord
       setup_user_delete(bot, access_control)
       setup_channel_register(bot, access_control)
       setup_channel_delete(bot, access_control)
+      setup_blog(bot, access_control)
+    end
+
+    def self.setup_blog(bot, ac)
+      bot.message(start_with: "#{PREFIX}blog") do |event|
+        # Qualquer um autorizado pode ver o blog
+        unless ac.user_allowed?(event.user.id)
+          event.respond "Acesso negado. Até o blog é um privilégio para os escolhidos."
+          next
+        end
+
+        feed = FeedManager.new
+        post = feed.fetch_latest_post
+        
+        if post
+          url = post.link.respond_to?(:href) ? post.link.href : post.link
+          titulo = post.title.to_s.gsub(/<\/?[^>]*>/, "")
+          event.respond "Aqui está a última abobrinha do mestre:\n**#{titulo}**\n#{url}"
+        else
+          event.respond "O oráculo do blog está em silêncio... ou o mestre quebrou o RSS (de novo)."
+        end
+      end
     end
 
     def self.setup_user_register(bot, ac)

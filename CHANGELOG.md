@@ -4,6 +4,10 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.2] - 2026-03-05
+### Adicionado
+- Comando `!blog` para consultar manualmente o último post do blog.
+
 ## [1.0.1] - 2026-03-05
 ### Adicionado
 - Monitoramento automático de novos posts no blog via RSS (`/feed.xml`) a cada 1 hora.
