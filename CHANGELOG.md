@@ -4,6 +4,10 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.6] - 2026-03-05
+### Corrigido
+- Refinamento das instruções de menção para evitar falhas de renderização (exibição de `<@ID>` como texto).
+
 ## [1.0.5] - 2026-03-05
 ### Corrigido
 - Proibição de exibição de IDs numéricos nas respostas da IA para maior privacidade e estética.
