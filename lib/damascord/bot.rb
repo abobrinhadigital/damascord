@@ -76,6 +76,7 @@ module Damascord
       user_context = "[Usuário: #{event.user.name} | ID: #{event.user.id}]"
       resposta = @gemini.generate_response(texto_limpo, user_context: user_context)
 
+      puts "\n[GEMINI Resposta]:\n#{resposta}\n"
       send_response(event, resposta)
     end
 

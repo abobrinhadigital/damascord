@@ -55,6 +55,7 @@ module Damascord
     end
 
     def notificar_canais(mensagem)
+      puts "\n[POST NOTIFIER]:\n#{mensagem}\n"
       @access.list_channels.each do |channel_data|
         begin
           channel_id = channel_data['id']
