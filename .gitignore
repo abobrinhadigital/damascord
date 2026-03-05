@@ -1,0 +1,22 @@
+# Dados dinâmicos e persona
+data/*
+!data/.gitkeep
+
+# Configurações sensíveis
+.env
+
+# Dependências
+vendor/bundle
+.bundle/
+Gemfile.lock
+
+# Cache e temporários
+tmp/
+*.log
+.jekyll-cache/
+_site/
+
+# IDEs e Sistema
+.vscode/
+.ruby-lsp/
+.DS_Store
