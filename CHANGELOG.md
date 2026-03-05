@@ -4,6 +4,19 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.1.0] - 2026-03-05
+### Adicionado
+- Bot Pollux totalmente funcional: chat, controle de acesso, monitoramento de blog e ajuda.
+- Estabilização definitiva das menções de usuário com proteção de privacidade (IDs ocultos).
+
+## [1.0.9] - 2026-03-05
+### Corrigido
+- Remoção definitiva de backticks exemplares na persona para evitar confusão imitativa da IA.
+
+## [1.0.8] - 2026-03-05
+### Corrigido
+- Proibição estrita de backticks/blocos de código em menções (`<@ID>`) para garantir a renderização visual no Discord.
+
 ## [1.0.7] - 2026-03-05
 ### Adicionado
 - Logs de console para as respostas da IA antes do envio (debugging de menções).
