@@ -10,6 +10,25 @@ module Damascord
       setup_channel_register(bot, access_control)
       setup_channel_delete(bot, access_control)
       setup_blog(bot, access_control)
+      setup_help(bot, access_control)
+    end
+
+    def self.setup_help(bot, ac)
+      bot.message(start_with: "#{PREFIX}help") do |event|
+        msg = "**Mandamentos do Pollux (Comandos):**\n"
+        msg += "- `!blog`: Mostra o último post do blog Abobrinha Digital.\n"
+        msg += "- `@Pollux [mensagem]`: Conversa com o biógrafo imortal (requer autorização).\n"
+        
+        if ac.master?(event.user.id)
+          msg += "\n**Poderes do Mestre:**\n"
+          msg += "- `!user_register @mortal`: Dá acesso a um novo navegante.\n"
+          msg += "- `!user_delete @mortal`: Revoga o acesso de um infeliz.\n"
+          msg += "- `!channel_register`: Autoriza este canal para o bot falar.\n"
+          msg += "- `!channel_delete`: Silencia o bot neste canal.\n"
+        end
+
+        event.respond msg
+      end
     end
 
     def self.setup_blog(bot, ac)
