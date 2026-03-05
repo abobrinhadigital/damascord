@@ -4,6 +4,10 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.4] - 2026-03-05
+### Adicionado
+- Suporte a menções reais de usuários nas respostas da IA usando a sintaxe `<@ID>`.
+
 ## [1.0.3] - 2026-03-05
 ### Adicionado
 - Comando `!help` com listagem dinâmica de permissões (Master vs Mortal).
