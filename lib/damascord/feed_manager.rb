@@ -17,7 +17,6 @@ module Damascord
       latest_post = fetch_latest_post
       return false if latest_post.nil?
       
-      # Se o link do post mais recente for diferente do que temos no cache
       if latest_post.link != @last_post_link
         @newest_post = latest_post
         return true
@@ -33,7 +32,7 @@ module Damascord
     def fetch_latest_post
       URI.open(FEED_URL) do |rss|
         feed = RSS::Parser.parse(rss)
-        feed.items.first
+        return feed.items.first
       end
     rescue StandardError => e
       puts "[ERRO ao buscar feed]: #{e.message}"
@@ -48,17 +47,6 @@ module Damascord
     end
 
     private
-
-    def fetch_latest_post
-      URI.open(FEED_URL) do |rss|
-        feed = RSS::Parser.parse(rss)
-        # O jekyll-feed gera um Atom feed, então usamos .items ou .entries
-        feed.items.first
-      end
-    rescue StandardError => e
-      puts "[ERRO ao buscar feed]: #{e.message}"
-      nil
-    end
 
     def load_cache
       return nil unless File.exist?(CACHE_FILE)

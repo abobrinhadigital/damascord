@@ -4,6 +4,27 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.0.7] - 2026-03-05
+### Corrigido
+- `Bot`: Remoção de handlers de eventos sobrepostos que causavam respostas duplicadas em comandos de prefixo.
+
+## [2.0.6] - 2026-03-05
+### Corrigido
+- `Commands`: Adicionada proteção contra registro duplicado de comandos (corrigindo respostas duplas no `!help`).
+
+## [2.0.5] - 2026-03-05
+### Corrigido
+- `FeedManager`: Remoção de método duplicado e correção definitiva da visibilidade de `fetch_latest_post` como público.
+
+## [2.0.4] - 2026-03-05
+### Corrigido
+- `FeedManager`: Método `fetch_latest_post` tornado público para que o comando `!blog` possa acessá-lo (corrigindo `NoMethodError`).
+
+## [2.0.3] - 2026-03-05
+### Corrigido
+- Comando `!blog`: Melhoria na extração da URL do post para maior compatibilidade com diferentes formatos de feed.
+- Log de erro interno no console para falhas na consulta ao RSS via comando.
+
 ## [2.0.2] - 2026-03-05
 ### Corrigido
 - Tratamento robusto de erros HTTP (400, 401, 429, 500) na comunicação com o Gemini.

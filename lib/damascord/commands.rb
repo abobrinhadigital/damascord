@@ -5,12 +5,16 @@ module Damascord
     PREFIX = '!'.freeze
 
     def self.setup(bot, access_control)
+      return if @already_setup
+      
       setup_user_register(bot, access_control)
       setup_user_delete(bot, access_control)
       setup_channel_register(bot, access_control)
       setup_channel_delete(bot, access_control)
       setup_blog(bot, access_control)
       setup_help(bot, access_control)
+      
+      @already_setup = true
     end
 
     def self.setup_help(bot, ac)
@@ -43,10 +47,19 @@ module Damascord
         post = feed.fetch_latest_post
         
         if post
-          url = post.link.respond_to?(:href) ? post.link.href : post.link
-          titulo = post.title.to_s.gsub(/<\/?[^>]*>/, "")
+          # Tenta extrair a URL de várias formas comuns em objetos RSS/Atom
+          url = if post.respond_to?(:link)
+                  post.link.respond_to?(:href) ? post.link.href : post.link.to_s
+                elsif post.respond_to?(:url)
+                  post.url
+                else
+                  "Link não encontrado"
+                end
+
+          titulo = post.title.to_s.gsub(/<\/?[^>]*>/, "").strip
           event.respond "Aqui está a última abobrinha do mestre:\n**#{titulo}**\n#{url}"
         else
+          puts "[ERRO !blog]: Não foi possível obter o post do FeedManager."
           event.respond "O oráculo do blog está em silêncio... ou o mestre quebrou o RSS (de novo)."
         end
       end

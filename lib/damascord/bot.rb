@@ -14,7 +14,10 @@ module Damascord
       Commands.setup(@client, @access)
       @notifier = PostNotifier.new(@client, @config, @access)
       
-      setup_events
+      # Registra o evento de mensagem apenas uma vez
+      @client.message do |event|
+        handle_message(event)
+      end
     end
 
     def start
@@ -26,11 +29,7 @@ module Damascord
 
     private
 
-    def setup_events
-      @client.message do |event|
-        handle_message(event)
-      end
-    end
+    # Removido setup_events para evitar redundância
 
     def handle_message(event)
       return if event.user.bot_account
