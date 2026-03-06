@@ -13,5 +13,6 @@ require_relative 'damascord/access_control'
 require_relative 'damascord/commands'
 require_relative 'damascord/feed_manager'
 require_relative 'damascord/post_notifier'
+require_relative "damascord/memory_manager"
 require_relative 'damascord/bot'
 require_relative 'damascord/cli'

@@ -7,6 +7,7 @@ module Damascord
     def initialize(config)
       @config = config
       @client = Discordrb::Bot.new(token: @config.discord_token, intents: [:server_messages, :direct_messages])
+      @memory = MemoryManager.new
       @gemini = GeminiClient.new(@config.gemini_api_key, @config.pollux_prompt, @config.gemini_model)
       @access = AccessControl.new(@config.master_user_id)
 
@@ -72,9 +73,14 @@ module Damascord
 
       event.channel.start_typing
       
-      # Anexa o contexto do usuário explicitamente
+      # Carrega o histórico do canal e gera resposta com contexto
+      history = @memory.load_history(event.channel.id)
       user_context = "[Usuário: #{event.user.name} | ID: #{event.user.id}]"
-      resposta = @gemini.generate_response(texto_limpo, user_context: user_context)
+      
+      resposta = @gemini.generate_response(texto_limpo, user_context: user_context, history: history)
+
+      # Salva a nova interação na memória
+      @memory.save_interaction(event.channel.id, "#{user_context}\n#{texto_limpo}", resposta)
 
       send_response(event, resposta)
     end

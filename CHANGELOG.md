@@ -4,6 +4,21 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.0.2] - 2026-03-05
+### Corrigido
+- Tratamento robusto de erros HTTP (400, 401, 429, 500) na comunicação com o Gemini.
+- Limpeza de código e correção de lints no `GeminiClient` e `version.rb`.
+
+## [2.0.1] - 2026-03-05
+### Corrigido
+- Mitigação de Erro 429 (Too Many Requests) com redução da janela de memória para 5 turnos.
+
+## [2.0.0] - 2026-03-05
+### Adicionado
+- **Sistema de Memória Persistente:** O Pollux agora lembra das últimas 10 interações em cada canal, mantendo o contexto da conversa mesmo após reinícios.
+- Novo `MemoryManager` para persistência em disco (`data/history/`).
+- Atualização do `GeminiClient` para suporte a conversas multi-turn.
+
 ## [1.1.0] - 2026-03-05
 ### Adicionado
 - Bot Pollux totalmente funcional: chat, controle de acesso, monitoramento de blog e ajuda.
