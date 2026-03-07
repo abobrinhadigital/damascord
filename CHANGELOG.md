@@ -4,6 +4,16 @@ Todos os erros notáveis deste projeto serão documentados neste arquivo.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.1.0] - 2026-03-07
+### Adicionado
+- **Integração com GoiabookLM:** Encaminhamento automático de URLs enviadas pelo Mestre via DM para a API do GoiabookLM.
+- Novo `GoiabookClient` para comunicação com a API de bookmarks.
+- Resposta automática simplificada para economia de tokens quando apenas uma URL é enviada.
+
+### Corrigido
+- `FeedManager`: Silenciamento de notificações automáticas de posts antigos na primeira inicialização do bot.
+- `Bot`: Correção de processos duplicados e limpeza de handlers redundantes.
+
 ## [2.0.7] - 2026-03-05
 ### Corrigido
 - `Bot`: Remoção de handlers de eventos sobrepostos que causavam respostas duplicadas em comandos de prefixo.

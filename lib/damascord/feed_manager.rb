@@ -19,6 +19,14 @@ module Damascord
       
       if latest_post.link != @last_post_link
         @newest_post = latest_post
+        
+        # Se for a primeira execução (cache vazio), atualizamos o cache 
+        # mas retornamos false para evitar notificação indesejada.
+        if @last_post_link.nil?
+          update_cache!
+          return false
+        end
+
         return true
       end
 

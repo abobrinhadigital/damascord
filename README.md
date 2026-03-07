@@ -14,7 +14,9 @@ O **Damascord** é um bot modular para Discord focado em integração com a API 
 - **Geração de Comentários**: Utiliza a IA para gerar introduções ou comentários personalizados baseados no conteúdo do post detectado.
 - **Cache de Notificações**: Sistema de persistência para evitar notificações duplicadas.
 
-### 3. Comandos e Controle
+### 4. Integração GoiabookLM (Exclusivo Mestre)
+- **Salvamento Automático**: URLs enviadas em DM pelo Mestre são automaticamente cadastradas como bookmarks no GoiabookLM.
+- **Detecção Inteligente**: Se houver texto acompanhando a URL, a IA processa o comentário enquanto o link é salvo.
 - **Comandos de Prefix**: Implementação via `discordrb` para consultas rápidas (!blog, !help, etc).
 - **Acesso Granular**: Controle de permissões para usuários e canais via arquivos de configuração YAML.
 - **Tratamento de Erros**: Mitigação de limites de taxa (Rate Limit) e falhas de API com respostas amigáveis.

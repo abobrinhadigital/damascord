@@ -13,6 +13,7 @@ module Damascord
 
       Commands.setup(@client, @access)
       @notifier = PostNotifier.new(@client, @config, @access)
+      @goiabook = GoiabookClient.new(@config.goiabook_api_url, @config.goiabook_api_token)
       
       # Registra o evento de mensagem apenas uma vez
       @client.message do |event|
@@ -38,6 +39,10 @@ module Damascord
 
       return unless mentioned_or_pm?(event)
       return unless authorized?(event)
+
+      if should_forward_to_goiabook?(event)
+        return if process_goiabook_forwarding(event)
+      end
 
       process_gemini_response(event)
     end
@@ -82,6 +87,34 @@ module Damascord
       @memory.save_interaction(event.channel.id, "#{user_context}\n#{texto_limpo}", resposta)
 
       send_response(event, resposta)
+    end
+
+    def should_forward_to_goiabook?(event)
+      return false unless @access.master?(event.user.id)
+      return false unless event.channel.pm?
+
+      # Regex simples para URL
+      event.message.content.match?(URI::DEFAULT_PARSER.make_regexp(['http', 'https']))
+    end
+
+    def process_goiabook_forwarding(event)
+      # Pega a primeira URL encontrada
+      url = event.message.content.match(URI::DEFAULT_PARSER.make_regexp(['http', 'https']))[0]
+      
+      # Se a mensagem tiver MAIS do que apenas a URL, não retornamos true aqui,
+      # permitindo que o Gemini processe o comentário associado.
+      # Mas se for SÓ a URL, nós barramos o Gemini para economizar token.
+      apenas_url = event.message.content.strip == url
+
+      begin
+        @goiabook.post_bookmark(url)
+        event.respond "Link cadastrado no GoiabookLM, mestre."
+        return apenas_url
+      rescue StandardError => e
+        puts "Erro Goiabook: #{e.message}"
+        event.respond "Tentei avisar a Goiaba, mas ela engasgou: #{e.message}"
+        return true # Barramos o Gemini para não confundir mais as coisas
+      end
     end
 
     def send_response(event, text)

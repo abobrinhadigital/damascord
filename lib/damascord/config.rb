@@ -2,7 +2,8 @@ module Damascord
   class Config
     class Error < StandardError; end
 
-    attr_reader :discord_token, :gemini_api_key, :gemini_model, :master_user_id, :pollux_prompt
+    attr_reader :discord_token, :gemini_api_key, :gemini_model, :master_user_id, :pollux_prompt,
+                :goiabook_api_url, :goiabook_api_token
 
     def initialize
       load_env
@@ -21,6 +22,8 @@ module Damascord
       @gemini_api_key = ENV['GEMINI_API_KEY']
       @gemini_model   = ENV.fetch('GEMINI_MODEL', 'gemini-2.5-flash')
       @master_user_id = ENV['MASTER_USER_ID']
+      @goiabook_api_url   = ENV.fetch('GOIABOOK_API_URL', 'http://127.0.0.1:3000/api/v1/bookmarks')
+      @goiabook_api_token = ENV.fetch('GOIABOOK_API_TOKEN', 'damascord_goiaba_2026')
 
       missing = []
       missing << 'DISCORD_TOKEN'  if @discord_token.nil?  || @discord_token.empty?
