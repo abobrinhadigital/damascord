@@ -1,6 +1,9 @@
 # Dados dinâmicos e persona
 data/*
 !data/.gitkeep
+assets/*
+!assets/.gitkeep
+
 
 # Configurações sensíveis
 .env
