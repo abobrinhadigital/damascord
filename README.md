@@ -1,5 +1,11 @@
 # Damascord Protocol
 
+> **Versão:** `v2.1.0` — **Status: DESCONTINUADO**
+
+> [!WARNING]
+> Este repositório está descontinuado e não receberá novas atualizações. A implementação sucessora é o **Pessegram** (bot para Telegram):
+> 👉 [abobrinhadigital/pessegram](https://github.com/abobrinhadigital/pessegram)
+
 O **Damascord** é um bot modular para Discord focado em integração com a API Google Gemini, monitoramento de feeds RSS e automação de diálogos com persistência de contexto.
 
 ## Funcionalidades
@@ -45,4 +51,17 @@ O **Damascord** é um bot modular para Discord focado em integração com a API 
 - `data/`: Diretório de dados persistentes, histórico e configurações locais.
 
 ---
+
+## Migração para Pessegram
+
+Este projeto foi substituído pelo **Pessegram**, que oferece:
+- Suporte a Telegram (mais conveniente para uso pessoal)
+- Integração com GoiabookLM e Mangofier
+- Mesma persona de Pollux
+- Arquitetura aprimorada
+
+👉 [abobrinhadigital/pessegram](https://github.com/abobrinhadigital/pessegram)
+
+---
+
 Desenvolvido para o ecossistema [Abobrinha Digital](https://abobrinhadigital.github.io/).
