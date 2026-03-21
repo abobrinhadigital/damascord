@@ -23,3 +23,8 @@ _site/
 .vscode/
 .ruby-lsp/
 .DS_Store
+
+# Instruções da IA e configurações de agente
+AGENTS.md
+.cursorrules
+.copilot-instructions.md
