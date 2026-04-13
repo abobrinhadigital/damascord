@@ -3,8 +3,7 @@
 > **Versão:** `v2.1.0` — **Status: DESCONTINUADO**
 
 > [!WARNING]
-> Este repositório está descontinuado e não receberá novas atualizações. A implementação sucessora é o **Pessegram** (bot para Telegram):
-> 👉 [abobrinhadigital/pessegram](https://github.com/abobrinhadigital/pessegram)
+> Este repositório está descontinuado e não receberá novas atualizações. O bot Discord que o substituiu foi integrado ao monorepo **Pollux** (código privado) como módulo nativo.
 
 O **Damascord** é um bot modular para Discord focado em integração com a API Google Gemini, monitoramento de feeds RSS e automação de diálogos com persistência de contexto.
 
